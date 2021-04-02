@@ -13,6 +13,8 @@
     "ejs-mate": "^3.0.0",
     "express": "^4.17.1",
     "method-override": "^3.0.0",
-    "mongoose": "^5.12.2"
+    "mongoose": "^5.12.2",
+    "request": "^2.88.2",
+    "tall": "^4.0.0"
   }
 }
