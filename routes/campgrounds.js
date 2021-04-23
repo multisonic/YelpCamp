@@ -40,7 +40,7 @@ router.get('/:id/edit', catchAsync(async (req, res) => {
   res.render('campgrounds/edit', {campground});
 }))
 
-router.put('/campgrounds/:id', validateCampground, catchAsync(async (req, res) => {
+router.put('/:id', validateCampground, catchAsync(async (req, res) => {
   const {id} = req.params;
   const campground = await Campground.findOneAndUpdate(id, {...req.body.campground});
   res.redirect(`/campgrounds/${campground._id}`)
