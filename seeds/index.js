@@ -43,6 +43,7 @@ const seedDB = async () => {
     const image = await getImage();
     console.log(image)
     const camp = new Campground({
+      author: '608762450840f63d3af33343',
       location: `${cities[random1000].city}, ${cities[random1000].state}`,
       title: `${sample(descriptors)} ${sample(places)}`,
       // image: 'https://source.unsplash.com/collection/483251',
