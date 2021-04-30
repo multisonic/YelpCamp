@@ -16,23 +16,6 @@ db.once("open", () => {
   console.log("Database connected");
 });
 
-function delay(ms) {
-  return new Promise(resolve => setTimeout(resolve, ms));
-}
-
-async function getImage() {
-  const unsplashUrl = 'https://source.unsplash.com/collection/483251';
-  function delay(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
-  }
-  try {
-    await delay(1000);
-    return await tall(unsplashUrl);
-  } catch (err) {
-    console.error('AAAW 👻', err);
-  }
-}
-
 const sample = array => array[Math.floor(Math.random() * array.length)];
 
 const seedDB = async () => {
@@ -40,14 +23,20 @@ const seedDB = async () => {
   for (let i = 0; i < 50; i++) {
     const random1000 = Math.floor(Math.random() * 1000);
     const price = Math.floor(Math.random() * 30) + 10;
-    const image = await getImage();
-    console.log(image)
     const camp = new Campground({
       author: '608762450840f63d3af33343',
       location: `${cities[random1000].city}, ${cities[random1000].state}`,
       title: `${sample(descriptors)} ${sample(places)}`,
-      // image: 'https://source.unsplash.com/collection/483251',
-      image: `${image}`,
+      images: [
+        {
+          url: 'https://res.cloudinary.com/dudynuv36/image/upload/v1619665280/YelpCamp/awfzw5f0rl6taj1kfthm.jpg',
+          filename: 'YelpCamp/awfzw5f0rl6taj1kfthm'
+        },
+        {
+          url: 'https://res.cloudinary.com/dudynuv36/image/upload/v1619665280/YelpCamp/ttp9w77ma5vscbcxnoyx.jpg',
+          filename: 'YelpCamp/ttp9w77ma5vscbcxnoyx'
+        }
+      ],
       description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus omnis hic recusandae aspernatur rem aliquam consectetur, iste, aperiam sapiente quisquam reiciendis culpa adipisci dolorem sed odit officiis a similique corrupti.',
       price //same as price: price
     })
